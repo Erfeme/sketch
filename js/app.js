@@ -36,8 +36,16 @@ appendDivs()
 
 btnNewGrid.addEventListener('click',(e)=>{
     let grid = prompt('Please enter the squares per side that you want in the new grid, a number minor than 100');
-    container.innerHTML = '';
-    appendDivs(grid);
+    grid =parseInt(grid);
+    console.log(typeof grid)
+    console.log(grid)
+    if (grid > 100 || Number.isNaN(grid)){
+        alert("Por favor introduzca un parametro válido (Un número positivo menor a 100)")
+    }else{
+        container.innerHTML = '';
+        appendDivs(grid);
+    }
+    
 })
 
 btnReset.addEventListener('click',e=>{
