@@ -1,11 +1,14 @@
 const container = document.querySelector('.gridContainer');
 const btnNewGrid = document.querySelector('.newGrid');
-const btnReset = document.querySelector('.reset')
+const btnReset = document.querySelector('.reset');
+const color = document.querySelector('.colorSelector');
+const rainbowButton = document.querySelector('.rainbow');
+let selectedColor= '#000000';
 let divs = '';
 let divsNumber = 0;
+let rainbow = false;
 
 appendDivs=(element=4)=>{                                       //Function that appends as much divs as desired, initially 16 if not element passed
-
 
     divsNumber= element * element;
     
@@ -27,7 +30,11 @@ appendDivs=(element=4)=>{                                       //Function that 
     divs.forEach(item=>{
         item.addEventListener('mouseover',e=>{
             e.stopPropagation();
-            e.target.style.backgroundColor= 'black';
+            if(rainbow==false){
+            e.target.style.backgroundColor= selectedColor;
+            } else if(rainbow ==true){
+            e.target.style.backgroundColor= '#' + Math.floor(Math.random()*16777215).toString(16);              
+            }
         })
     })
 }
@@ -53,3 +60,17 @@ btnReset.addEventListener('click',e=>{
     appendDivs();
 })
 
+color.addEventListener('change',e=>{
+    selectedColor = color.value;
+    console.log(selectedColor);
+})
+
+rainbowButton.addEventListener('click',e=>{
+    if(rainbow == true){
+        rainbow = false;
+        rainbowButton.innerText = "Rainbow Off"
+    }else if(rainbow == false){
+        rainbow = true;
+        rainbowButton.innerText = "Rainbow On!"
+    }
+})
