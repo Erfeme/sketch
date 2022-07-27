@@ -18,13 +18,19 @@ appendDivs=(element=4)=>{                                       //Function that 
         frNumb += ' 1fr'
     }
     console.log(frNumb);
-    
+
     container.style.gridTemplateColumns= frNumb;
     container.style.gridTemplateRows=frNumb;
-
-    
-
     divs = document.querySelectorAll('.pixel');
+    
+    divs.forEach(item=>{
+        item.addEventListener('mouseover',e=>{
+            console.log(item)
+            console.log(e)
+            e.stopPropagation();
+            e.target.style.backgroundColor= 'black';
+        })
+    })
 }
 
 appendDivs()
