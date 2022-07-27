@@ -42,7 +42,7 @@ appendDivs=(element=4)=>{                                       //Function that 
 appendDivs()
 
 btnNewGrid.addEventListener('click',(e)=>{
-    let grid = prompt('Please enter the squares per side that you want in the new grid, a number minor than 100');
+    let grid = prompt('Ingresa el numero de cuadros por lado que quieres en tu nuevo lienzo (Menor a 100)');
     grid =parseInt(grid);
     console.log(typeof grid)
     console.log(grid)
@@ -69,8 +69,10 @@ rainbowButton.addEventListener('click',e=>{
     if(rainbow == true){
         rainbow = false;
         rainbowButton.innerText = "Rainbow Off"
+        rainbowButton.classList.remove('rainbowAnimation')
     }else if(rainbow == false){
         rainbow = true;
+        rainbowButton.classList.add('rainbowAnimation')
         rainbowButton.innerText = "Rainbow On!"
     }
 })
